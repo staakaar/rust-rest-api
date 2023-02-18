@@ -1,3 +1,0 @@
-cargo:rerun-if-changed=build/main.rs
-cargo:rustc-env=TYPENUM_BUILD_CONSTS=/Users/iwamototakayuki/rust_pro/rust-rest-api/target/debug/build/typenum-1e50cbb7fa2d0bba/out/consts.rs
-cargo:rustc-env=TYPENUM_BUILD_OP=/Users/iwamototakayuki/rust_pro/rust-rest-api/target/debug/build/typenum-1e50cbb7fa2d0bba/out/op.rs
