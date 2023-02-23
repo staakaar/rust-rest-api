@@ -1,18 +1,11 @@
-use actix_web::{get, Responder, HttpResponse, web, App, post};
-use serde::Deserialize;
+use actix_web::{ web };
 use crate::controllers::estimationController;
 
-/* request　form 作成してベットファイル用意 */
-#[derive(Deserialize)]
-struct EstimateRequest {
-    estimation_request_id: i128,
-    name: String,
-    desired_amount: String
-}
 
-pub fn estimation_request_config(config: &mut web::ServiceConfig) {
+pub fn estimation_request(config: &mut web::ServiceConfig) {
     config.service(web::resource("/estimate/{code}")
-            .route(web::get().to(estimationController::create)));
+            .route(web::get().to(estimationController::index)))
+            .service(web::resource("/estimate").route(web::post().to(estimationController::create)));
 }
 
 /* ルートアクセスはデフォルトでトップページにリダイレクトされる実装にする */
