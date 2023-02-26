@@ -6,7 +6,13 @@ pub struct EstimationService {
 
 impl estimationService for EstimateServiceImpl {
     fn estimation_request(&self, estimate: &Json) -> HttpResponse {
-        /** domain層の処理へ */
+        /** 値オブジェクト */
+        let estimationRequestId = EstimationRequestId::new(estimate.id);
+        /** ドメインオブジェクト  */
+        let estimationRequest = EstimationRequest::new(estimationRequestId, estimate.name, estimate.desired_amount);
+        /** ドメインサービスのロジック実装 */
+
+        /** 最終的なレスポンスデータを返却 */
         HttpResponse::Ok().json()
     }
 }

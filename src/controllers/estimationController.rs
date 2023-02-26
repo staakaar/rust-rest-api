@@ -4,11 +4,12 @@ use crate::domain::service::EstimationService;
 
 #[derive(Deserialize)]
 pub struct EstimateRequest {
-    estimation_request_id: i128,
+    id: i128,
     name: String,
     desired_amount: String
 }
 
+/** 後で消す */
 pub async fn index() -> impl Responder {
     HttpResponse::Ok().body("body")
 }
