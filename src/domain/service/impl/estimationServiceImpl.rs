@@ -12,6 +12,7 @@ impl estimationService for EstimateServiceImpl {
         let estimationRequest = EstimationRequest::new(estimationRequestId, estimate.name, estimate.desired_amount);
         /** ドメインサービスのロジック実装 */
 
+
         /** 最終的なレスポンスデータを返却 */
         HttpResponse::Ok().json()
     }
