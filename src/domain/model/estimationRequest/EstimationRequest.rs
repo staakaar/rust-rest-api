@@ -1,4 +1,6 @@
-
+/** 
+ * ドメインオブジェクト 
+*/
 
 struct EstimationRequest {
     id: EstimationRequestId,

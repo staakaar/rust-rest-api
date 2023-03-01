@@ -1,1 +1,4 @@
+/**
+ * ドメインサービス
+ */
 trait EstimationRequestService {}
