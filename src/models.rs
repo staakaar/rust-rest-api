@@ -15,3 +15,10 @@ pub struct Article {
     pub created_at: Datetime,
     pub updated_at: Datetime
 }
+
+#[derive(Queryable)]
+pub struct EstimateRequest {
+    id: Integer,
+    name: String,
+    desired_amount: String
+}

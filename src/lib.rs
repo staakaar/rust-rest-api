@@ -11,7 +11,8 @@ use std::env;
 
 pub fn establish_connection() -> MysqlConnection {
     dotenv().ok();
-   // mysql://user:pass@host/dbname
+   
+   // 環境変数の取得
    let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
 
    MysqlConnection::establish(&database_url)
