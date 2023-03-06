@@ -1,5 +1,6 @@
 pub mod routes;
 pub mod controllers;
+pub mod application;
 pub mod domain;
 pub mod models;
 pub mod schema;

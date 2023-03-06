@@ -1,12 +1,16 @@
 use actix_web::{HttpResponse, Responder, web};
 use serde::Deserialize;
-use crate::domain::service::EstimationService;
+use crate::application::service::EstimationService::EstimationService;
 
 #[derive(Deserialize)]
 pub struct EstimateRequest {
     id: i128,
     name: String,
     desired_amount: String
+}
+
+pub struct estimationService<estimation_service: EstimationService> {
+    service: estimation_service
 }
 
 /** 後で消す */
