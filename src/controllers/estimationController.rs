@@ -1,6 +1,6 @@
-use actix_web::{HttpResponse, Responder, web};
+use actix_web::{HttpResponse, web};
 use serde::Deserialize;
-use crate::application::service::EstimationService::EstimationService;
+use crate::application::service::estimationService::EstimationService;
 
 #[derive(Deserialize)]
 pub struct EstimateRequest {
@@ -9,18 +9,22 @@ pub struct EstimateRequest {
     desired_amount: String
 }
 
-pub struct estimationService<estimation_service: EstimationService> {
-    service: estimation_service
+/** estimationControllerのtrait定義 */
+pub trait EstimationController {
+    fn create(&self, estimate: web::Json<EstimateRequest>) -> HttpResponse;
 }
 
-/** 後で消す */
-pub async fn index() -> impl Responder {
-    HttpResponse::Ok().body("body")
+/** estimationControllerの構造体の定義 */
+pub struct EstimationControllerImpl<E: EstimationService> {
+    estimation_service: E,
 }
 
-pub async fn create(estimate: web::Json<EstimateRequest>, service: web::Data<Box<dyn EstimationService>>) -> impl Responder {
-    let response = service.estimationRequest(estimate);
-    /* estimationRequestの登録を行う dxo -> call service layer -> response */
-    format!("estimateRquestの中身は id: {}, name: {}, amount: {}", estimate.estimation_request_id, estimate.name, estimate.desired_amount);
-    HttpResponse::Ok().body("json返すよ!")
+/** estimationControllerの実装定義 */
+impl<E: EstimationService> EstimationController for EstimationControllerImpl<E> {
+    fn create(&self, estimate: web::Json<EstimateRequest>) -> HttpResponse {
+        let response = self.estimation_service.estimationRequest(estimate);
+        /* estimationRequestの登録を行う dxo -> call service layer -> response */
+        format!("estimateRquestの中身は id: {}, name: {}, amount: {}", estimate.id, estimate.name, estimate.desired_amount);
+        HttpResponse::Ok().body("json返すよ!")
+    } 
 }
