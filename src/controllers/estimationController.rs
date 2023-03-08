@@ -11,7 +11,7 @@ pub struct EstimateRequest {
 
 /** estimationControllerのtrait定義 */
 pub trait EstimationController {
-    fn create(&self, estimate: web::Json<EstimateRequest>) -> HttpResponse;
+    fn create(&self) -> HttpResponse;
 }
 
 /** estimationControllerの構造体の定義 */
@@ -21,7 +21,7 @@ pub struct EstimationControllerImpl<E: EstimationService> {
 
 /** estimationControllerの実装定義 */
 impl<E: EstimationService> EstimationController for EstimationControllerImpl<E> {
-    fn create(&self, estimate: web::Json<EstimateRequest>) -> HttpResponse {
+    fn create(&self) -> HttpResponse {
         let response = self.estimation_service.estimationRequest(estimate);
         /* estimationRequestの登録を行う dxo -> call service layer -> response */
         format!("estimateRquestの中身は id: {}, name: {}, amount: {}", estimate.id, estimate.name, estimate.desired_amount);
