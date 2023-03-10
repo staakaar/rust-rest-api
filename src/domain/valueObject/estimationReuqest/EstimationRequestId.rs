@@ -4,8 +4,8 @@
 
 use validator::{Validate, ValidationError};
 
-#[derive(Debug, Copy, Clone, Eq, PartialEq, Validate)]
+#[derive(Debug, Copy, Clone, Eq, PartialEq, Validate, Deserialize)]
 pub struct EstimationRequestId {
-    #[Validate(estimationRequestId)]
+    #[Validate(required)]
     id: i128
 }
