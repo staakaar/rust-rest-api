@@ -18,7 +18,16 @@ pub struct Article {
 
 #[derive(Queryable)]
 pub struct EstimateRequest {
-    id: Integer,
-    name: String,
-    desired_amount: String
+    pub id: Integer,
+    pub name: String,
+    pub desired_amount: String
+}
+
+#[derive(Queryable)]
+pub struct Review {
+    pub id: Integer,
+    pub article_id: Integer,
+    pub detail: String,
+    pub created_at: Datetime,
+    pub updated_at: Datetime
 }
