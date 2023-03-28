@@ -16,3 +16,5 @@ dotenv = "0.15"
 serde_json = "1.0"
 
 anyhow = { version = "1.0", default-features = false }
+r2d2 = "0.8.10"
+r2d2_mysql = "23.0.0"
